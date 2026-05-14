@@ -51,6 +51,12 @@
       color: var(--ink);
     }
 
+    header .chart-updated {
+      font-size: 11px;
+      color: var(--ink-muted);
+      letter-spacing: 0.04em;
+    }
+
     header .timestamp {
       font-size: 11px;
       color: var(--ink-muted);
@@ -64,7 +70,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 1px;
       background: var(--border);
-      /* 4行 × widget height。各セルはビューポートの半分弱を縦に使う */
     }
 
     .cell {
@@ -100,16 +105,17 @@
 
     .widget-wrap {
       flex: 1;
-      /* ウィジェット自体の高さを画面高さ基準で設定 */
       height: calc((100vh - var(--header-h)) / 2 - 28px);
       min-height: 200px;
       overflow: hidden;
+      background: var(--bg);
     }
 
-    .widget-wrap iframe,
-    .widget-wrap > div {
-      width: 100% !important;
-      height: 100% !important;
+    .chart-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: fill;
     }
 
     /* ── Scrollbar ── */
@@ -123,6 +129,7 @@
 
 <header>
   <h1>Market Overview</h1>
+  <span class="chart-updated" id="chart-updated"></span>
   <span class="timestamp" id="ts"></span>
 </header>
 
@@ -135,28 +142,7 @@
       <span class="desc">Nasdaq 100 ETF</span>
     </div>
     <div class="widget-wrap">
-      <div class="tradingview-widget-container" style="height:100%">
-        <div class="tradingview-widget-container__widget" style="height:100%"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {
-          "symbol": "NASDAQ:QQQ",
-          "interval": "D",
-          "timezone": "America/New_York",
-          "theme": "light",
-          "style": "1",
-          "locale": "en",
-          "hide_top_toolbar": false,
-          "hide_legend": true,
-          "allow_symbol_change": false,
-          "save_image": false,
-          "calendar": false,
-          "hide_volume": false,
-          "support_host": "https://www.tradingview.com",
-          "width": "100%",
-          "height": "100%"
-        }
-        </script>
-      </div>
+      <img src="charts/qqq.png" alt="QQQ" class="chart-img">
     </div>
   </div>
 
@@ -167,28 +153,7 @@
       <span class="desc">S&amp;P 500 ETF</span>
     </div>
     <div class="widget-wrap">
-      <div class="tradingview-widget-container" style="height:100%">
-        <div class="tradingview-widget-container__widget" style="height:100%"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {
-          "symbol": "AMEX:SPY",
-          "interval": "D",
-          "timezone": "America/New_York",
-          "theme": "light",
-          "style": "1",
-          "locale": "en",
-          "hide_top_toolbar": false,
-          "hide_legend": true,
-          "allow_symbol_change": false,
-          "save_image": false,
-          "calendar": false,
-          "hide_volume": false,
-          "support_host": "https://www.tradingview.com",
-          "width": "100%",
-          "height": "100%"
-        }
-        </script>
-      </div>
+      <img src="charts/spy.png" alt="SPY" class="chart-img">
     </div>
   </div>
 
@@ -199,28 +164,7 @@
       <span class="desc">Russell 2000 ETF</span>
     </div>
     <div class="widget-wrap">
-      <div class="tradingview-widget-container" style="height:100%">
-        <div class="tradingview-widget-container__widget" style="height:100%"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {
-          "symbol": "AMEX:IWM",
-          "interval": "D",
-          "timezone": "America/New_York",
-          "theme": "light",
-          "style": "1",
-          "locale": "en",
-          "hide_top_toolbar": false,
-          "hide_legend": true,
-          "allow_symbol_change": false,
-          "save_image": false,
-          "calendar": false,
-          "hide_volume": false,
-          "support_host": "https://www.tradingview.com",
-          "width": "100%",
-          "height": "100%"
-        }
-        </script>
-      </div>
+      <img src="charts/iwm.png" alt="IWM" class="chart-img">
     </div>
   </div>
 
@@ -231,28 +175,7 @@
       <span class="desc">Dow Jones ETF</span>
     </div>
     <div class="widget-wrap">
-      <div class="tradingview-widget-container" style="height:100%">
-        <div class="tradingview-widget-container__widget" style="height:100%"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {
-          "symbol": "AMEX:DIA",
-          "interval": "D",
-          "timezone": "America/New_York",
-          "theme": "light",
-          "style": "1",
-          "locale": "en",
-          "hide_top_toolbar": false,
-          "hide_legend": true,
-          "allow_symbol_change": false,
-          "save_image": false,
-          "calendar": false,
-          "hide_volume": false,
-          "support_host": "https://www.tradingview.com",
-          "width": "100%",
-          "height": "100%"
-        }
-        </script>
-      </div>
+      <img src="charts/dia.png" alt="DIA" class="chart-img">
     </div>
   </div>
 
@@ -263,28 +186,7 @@
       <span class="desc">Semiconductor ETF</span>
     </div>
     <div class="widget-wrap">
-      <div class="tradingview-widget-container" style="height:100%">
-        <div class="tradingview-widget-container__widget" style="height:100%"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {
-          "symbol": "NASDAQ:SMH",
-          "interval": "D",
-          "timezone": "America/New_York",
-          "theme": "light",
-          "style": "1",
-          "locale": "en",
-          "hide_top_toolbar": false,
-          "hide_legend": true,
-          "allow_symbol_change": false,
-          "save_image": false,
-          "calendar": false,
-          "hide_volume": false,
-          "support_host": "https://www.tradingview.com",
-          "width": "100%",
-          "height": "100%"
-        }
-        </script>
-      </div>
+      <img src="charts/smh.png" alt="SMH" class="chart-img">
     </div>
   </div>
 
@@ -295,28 +197,7 @@
       <span class="desc">Volatility Index</span>
     </div>
     <div class="widget-wrap">
-      <div class="tradingview-widget-container" style="height:100%">
-        <div class="tradingview-widget-container__widget" style="height:100%"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {
-          "symbol": "CBOE:VIX",
-          "interval": "D",
-          "timezone": "America/New_York",
-          "theme": "light",
-          "style": "1",
-          "locale": "en",
-          "hide_top_toolbar": false,
-          "hide_legend": true,
-          "allow_symbol_change": false,
-          "save_image": false,
-          "calendar": false,
-          "hide_volume": false,
-          "support_host": "https://www.tradingview.com",
-          "width": "100%",
-          "height": "100%"
-        }
-        </script>
-      </div>
+      <img src="charts/vix.png" alt="VIX" class="chart-img">
     </div>
   </div>
 
@@ -327,28 +208,7 @@
       <span class="desc">10-Year Treasury Yield</span>
     </div>
     <div class="widget-wrap">
-      <div class="tradingview-widget-container" style="height:100%">
-        <div class="tradingview-widget-container__widget" style="height:100%"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {
-          "symbol": "TVC:US10Y",
-          "interval": "D",
-          "timezone": "America/New_York",
-          "theme": "light",
-          "style": "1",
-          "locale": "en",
-          "hide_top_toolbar": false,
-          "hide_legend": true,
-          "allow_symbol_change": false,
-          "save_image": false,
-          "calendar": false,
-          "hide_volume": false,
-          "support_host": "https://www.tradingview.com",
-          "width": "100%",
-          "height": "100%"
-        }
-        </script>
-      </div>
+      <img src="charts/us10y.png" alt="US10Y" class="chart-img">
     </div>
   </div>
 
@@ -359,31 +219,7 @@
       <span class="desc">S&amp;P500 vs Russell 2000</span>
     </div>
     <div class="widget-wrap">
-      <div class="tradingview-widget-container" style="height:100%">
-        <div class="tradingview-widget-container__widget" style="height:100%"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {
-          "symbol": "SP:SPX",
-          "interval": "D",
-          "timezone": "America/New_York",
-          "theme": "light",
-          "style": "1",
-          "locale": "en",
-          "hide_top_toolbar": false,
-          "hide_legend": true,
-          "allow_symbol_change": false,
-          "save_image": false,
-          "calendar": false,
-          "hide_volume": false,
-          "compare_symbols": [
-            { "symbol": "TVC:RUT", "position": "SameScale" }
-          ],
-          "support_host": "https://www.tradingview.com",
-          "width": "100%",
-          "height": "100%"
-        }
-        </script>
-      </div>
+      <img src="charts/spx_rut.png" alt="SPX vs RUT" class="chart-img">
     </div>
   </div>
 
@@ -398,6 +234,17 @@
   }
   updateTime();
   setInterval(updateTime, 1000);
+
+  fetch('charts/meta.json')
+    .then(r => r.json())
+    .then(m => {
+      const d = new Date(m.updated_at);
+      const opts = { timeZone: 'America/New_York', month: 'short', day: 'numeric',
+                     hour: '2-digit', minute: '2-digit', hour12: false };
+      document.getElementById('chart-updated').textContent =
+        'updated ' + d.toLocaleString('en-US', opts) + ' ET';
+    })
+    .catch(() => {});
 </script>
 
 </body>
