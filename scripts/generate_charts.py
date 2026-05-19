@@ -133,6 +133,42 @@ def main() -> None:
     save_comparison("spx_rut.png", fetch("^GSPC"), fetch("^RUT"), "SPX", "RUT")
     print("  spx_rut.png")
 
+    save_candle("xlk.png", fetch("XLK"))
+    print("  xlk.png")
+
+    save_candle("xlp.png", fetch("XLP"))
+    print("  xlp.png")
+
+    save_candle("xle.png", fetch("XLE"))
+    print("  xle.png")
+
+    save_candle("soxx.png", fetch("SOXX"))
+    print("  soxx.png")
+
+    save_candle("xly.png", fetch("XLY"))
+    print("  xly.png")
+
+    save_candle("xlv.png", fetch("XLV"))
+    print("  xlv.png")
+
+    save_candle("xlb.png", fetch("XLB"))
+    print("  xlb.png")
+
+    save_candle("xlu.png", fetch("XLU"))
+    print("  xlu.png")
+
+    save_candle("xli.png", fetch("XLI"))
+    print("  xli.png")
+
+    save_candle("xlc.png", fetch("XLC"))
+    print("  xlc.png")
+
+    save_candle("xlre.png", fetch("XLRE"))
+    print("  xlre.png")
+
+    save_candle("xlf.png", fetch("XLF"))
+    print("  xlf.png")
+
     meta = {"updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
     (CHARTS_DIR / "meta.json").write_text(json.dumps(meta))
     print(f"Done. Updated at {meta['updated_at']}")
