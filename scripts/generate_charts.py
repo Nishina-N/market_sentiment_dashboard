@@ -83,16 +83,13 @@ def save_line(filename: str, df: pd.DataFrame) -> None:
     )
 
 
-def save_comparison(filename: str, df1: pd.DataFrame, df2: pd.DataFrame,
-                    label1: str, label2: str) -> None:
-    s1 = df1['Close'] / df1['Close'].iloc[0] * 100
-    s2 = df2['Close'] / df2['Close'].iloc[0] * 100
+def save_ratio(filename: str, df1: pd.DataFrame, df2: pd.DataFrame,
+               label: str) -> None:
+    ratio = df1['Close'] / df2['Close']
 
     fig, ax = plt.subplots(figsize=FIGSIZE, facecolor=BG)
     ax.set_facecolor(BG)
-    ax.plot(s1.index, s1.values, color=INK, linewidth=1.5, label=label1)
-    ax.plot(s2.index, s2.values, color=DOWN, linewidth=1.5, label=label2)
-    ax.axhline(100, color=BORD, linewidth=0.8, linestyle='--')
+    ax.plot(ratio.index, ratio.values, color=INK, linewidth=1.5, label=label)
     ax.legend(loc='upper left', fontsize=9, framealpha=0)
     ax.tick_params(colors=MUTED, labelsize=9)
     for spine in ax.spines.values():
@@ -130,7 +127,7 @@ def main() -> None:
     save_line("us10y.png", fetch("^TNX"))
     print("  us10y.png")
 
-    save_comparison("spx_rut.png", fetch("^GSPC"), fetch("^RUT"), "SPX", "RUT")
+    save_ratio("spx_rut.png", fetch("^GSPC"), fetch("^RUT"), "SPX/RUT")
     print("  spx_rut.png")
 
     meta = {"updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
