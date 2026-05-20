@@ -47,7 +47,7 @@ MPSTYLE = mpf.make_mpf_style(
     },
 )
 
-FIGSIZE = (10, 5)
+FIGSIZE = (9, 6)
 DPI = 120
 PERIOD = "6mo"
 
