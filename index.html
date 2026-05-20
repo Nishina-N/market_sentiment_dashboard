@@ -130,6 +130,18 @@
       object-fit: fill;
     }
 
+    /* ── Mobile ── */
+    @media (max-width: 640px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .widget-wrap {
+        height: auto;
+        min-height: unset;
+        aspect-ratio: 2 / 1;
+      }
+    }
+
     /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
